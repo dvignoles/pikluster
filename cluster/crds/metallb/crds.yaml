@@ -7,7 +7,8 @@ metadata:
 spec:
   interval: 30m
   url: https://github.com/metallb/metallb.git
- # ref:
+  ref:
+    branch: main
  #   # renovate: registryUrl=https://1password.github.io/connect-helm-charts chart=connect
  #   tag: connect-1.7.0
   ignore: |
