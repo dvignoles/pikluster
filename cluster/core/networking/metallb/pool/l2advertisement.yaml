@@ -1,0 +1,6 @@
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: first-pool-l2-advertisement
+  namespace: networking
+
