@@ -5,7 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: https://github.com/metallb/metallb.git
+  url: https://github.com/metallb/metallb
+  ref: 
+    branch: main
   ignore: |
     # exclude all but the CDRs
     /*
