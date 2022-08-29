@@ -7,7 +7,7 @@ spec:
   interval: 60m
   url: https://github.com/coder/code-server
   ref:
-    branch: master
+    branch: main
   ignore: |
     # exclude all
     /*
