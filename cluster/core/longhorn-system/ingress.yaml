@@ -19,9 +19,9 @@ spec:
       kind: Rule
       middlewares:
         - name: default-basic-auth
-          namespace: default
+          namespace: networking
         - name: default-headers
-          namespace: default
+          namespace: networking
       services:
         - name: longhorn-frontend
           port: 80
