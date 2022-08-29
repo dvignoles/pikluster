@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: metallb-charts-git
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: https://github.com/metallb/metallb.git
+  ignore: |
+    # exclude all but the CDRs
+    /*
+    # path to crds
+    !/charts/metallb/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: ./charts/metallb/charts/crds
+      version: '0.0.0'
+      sourceRef:
+        kind: GitRepository
+        name: metallb-charts-git
+        namespace: flux-system
