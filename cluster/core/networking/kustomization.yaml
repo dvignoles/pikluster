@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- metallb
+- pool
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: metallb-helmrelease
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./cluster/core/networking/metallb"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: metallb-ippool
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: metallb-helmrelease
+  interval: 5m
+  path: "./cluster/core/networking/pool"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system 
