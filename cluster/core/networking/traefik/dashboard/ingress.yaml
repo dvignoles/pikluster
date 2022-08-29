@@ -11,9 +11,9 @@ spec:
   routes:
     - match: Host(`traefik.local.danielvignoles.com`)
       kind: Rule
-      #middlewares:
-      #  - name: traefik-dashboard-basicauth
-      #    namespace: traefik
+      middlewares:
+        - name: default-basic-auth
+          namespace: networking
       services:
         - name: api@internal
           kind: TraefikService
