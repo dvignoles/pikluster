@@ -1,0 +1,15 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: code-server
+  namespace: flux-system
+spec:
+  interval: 60m
+  url: https://github.com/coder/code-server
+  ref:
+    branch: master
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/ci/helm-chart/
