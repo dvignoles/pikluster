@@ -4,4 +4,6 @@ resources:
 - release.yaml
 - default-headers.yaml
 - default-certificate.yaml
+- basic-auth.enc.yaml
+- default-basic-auth.yaml
 - dashboard
