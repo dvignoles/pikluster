@@ -23,6 +23,19 @@ spec:
       services:
         - name: code-server
           port: 8080
+    - match: Host(`www.code.danielvignoles.com`)
+      kind: Rule
+      services:
+        - name: code-server
+          port: 8080
+    - match: Host(`code.danielvignoles.com`)
+      kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: networking
+      services:
+        - name: code-server
+          port: 8080
 ## default cert used in traefik namespace
 #  tls:
 #    secretName: local-danielvignoles-com-tls
