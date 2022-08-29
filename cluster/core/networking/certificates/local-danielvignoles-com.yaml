@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: local-danielvignoles-com
+  namespace: networking
+spec:
+  secretName: local-danielvignoles-com-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.local.danielvignoles.com"
+  dnsNames:
+  - "local.danielvignoles.com"
+  - "*.local.danielvignoles.com"
