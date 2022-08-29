@@ -4,5 +4,5 @@ resources:
 - metallb-charts.yaml
 - traefik.yaml
 - cert-manager.yaml
-- longhorn
+- longhorn.yaml
 
