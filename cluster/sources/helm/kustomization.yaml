@@ -5,4 +5,5 @@ resources:
 - traefik.yaml
 - cert-manager.yaml
 - longhorn.yaml
+- rancher.yaml
 

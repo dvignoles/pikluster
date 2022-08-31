@@ -1,0 +1,28 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rancher
+  namespace: cattle-system
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.rancher.local.danielvignoles.com`)
+      kind: Rule
+      services:
+        - name: rancher
+          port: 80
+    - match: Host(`rancher.local.danielvignoles.com`)
+      kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: networking
+      services:
+        - name: rancher
+          port: 80
+## default cert used in traefik namespace
+#  tls:
+#    secretName: local-danielvignoles-com-tls

@@ -5,3 +5,4 @@ resources:
 - cert-manager.yaml
 - longhorn-system.yaml
 - code-server.yaml
+- cattle-system.yaml
