@@ -1,8 +1,0 @@
-# yamllint disable
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: cluster-settings
-  namespace: flux-system
-data:
-  SETTING_CERT_MANAGER_CLUSTER_ISSUER: letsencrypt-production
