@@ -26,9 +26,6 @@ spec:
             - mountPath: /var/lib/postgresql/data
               name: postgres-pvc
           resources: {}
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
       volumes:
         - name: postgres-pvc
           persistentVolumeClaim:
