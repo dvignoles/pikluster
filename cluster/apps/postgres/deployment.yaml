@@ -25,8 +25,13 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-pvc
+            - mountPath: /home/backups
+              name: postgres-backups
           resources: {}
       volumes:
         - name: postgres-pvc
           persistentVolumeClaim:
             claimName: postgres-pvc
+        - name: postgres-backups
+          persistentVolumeClaim:
+            claimName: postgres-backups
