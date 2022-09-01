@@ -16,7 +16,7 @@ spec:
               args:
                 - -c
                 - >-
-                  pg_dumpall -d postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres -w --clean --column-inserts --if-exists --quote-all-identifiers \
+                  pg_dumpall -d "postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres" -w --clean --column-inserts --if-exists --quote-all-identifiers \
                   | gzip --best \
                   | gpg --armor --cipher-algo AES256 --symmetric --yes --batch \
                   --passphrase="$BACKUP_PHRASE" > /home/backups/pg_dumpall_$(date +%Y%m%d%H%M%S).sql.gz.asc
