@@ -4,6 +4,7 @@ metadata:
   labels:
     app: postgres
   name: postgres-pvc
+  namespace: db
 spec:
   accessModes:
     - ReadWriteMany
