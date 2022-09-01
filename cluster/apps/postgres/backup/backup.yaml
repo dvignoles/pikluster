@@ -1,0 +1,40 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: pgbackup
+  namespace: db
+spec:
+  schedule: "0 */5 * ? * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: postgres
+              image: postgres:14.5
+              command: [/bin/sh]
+              args:
+                - -c
+                - >-
+                  pg_dumpall -d postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres -w --clean --column-inserts --if-exists --quote-all-identifiers \
+                  | gzip --best \
+                  | gpg --armor --cipher-algo AES256 --symmetric --yes --batch \
+                  --passphrase="$BACKUP_PASSPHRASE" > /home/backups/pg_dumpall_$(date +%Y%m%d%H%M%S).sql.gz.asc
+              envFrom:
+                - configMapRef:
+                    name: postgres-config
+              volumeMounts:
+                - mountPath: /home/backups
+                  name: postgres-backups
+                - mountPath: /root/.pgpass
+                  subPath: .pgpass
+                  readOnly: true
+                  name: pgpass
+          restartPolicy: Never
+          volumes:
+            - name: postgres-backups
+              persistentVolumeClaim:
+                claimName: postgres-backups
+            - name: pgpass
+              secret:
+                  secretName: pgpass
