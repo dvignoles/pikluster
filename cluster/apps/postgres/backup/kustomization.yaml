@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - backups-pvc.yaml
 - pgpass-secret.sops.yaml
-- backup.yaml
+- backup-cron.yaml
