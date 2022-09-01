@@ -15,7 +15,7 @@ spec:
               command: [/bin/bash]
               args:
                 - -c
-                - >
+                - |
                   pg_dumpall -d "postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres" -w --clean --column-inserts --if-exists --quote-all-identifiers \
                   | gzip --best \
                   | gpg --armor --cipher-algo AES256 --symmetric --yes --batch \
