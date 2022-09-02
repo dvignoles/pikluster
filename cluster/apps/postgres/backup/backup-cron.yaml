@@ -4,7 +4,7 @@ metadata:
   name: pgbackup
   namespace: db
 spec:
-  schedule: "0 2 * * 7"
+  schedule: "0 2 * * 0"
   jobTemplate:
     spec:
       template:
