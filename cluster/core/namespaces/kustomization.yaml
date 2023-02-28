@@ -7,3 +7,4 @@ resources:
 - code-server.yaml
 - cattle-system.yaml
 - db.yaml
+- airflow.yaml

@@ -6,4 +6,5 @@ resources:
 - cert-manager.yaml
 - longhorn.yaml
 - rancher.yaml
+- apache-airflow.yaml
 
