@@ -13,7 +13,7 @@ k3sup install \
     --ip $SERVER_IP \
     --user $USER \
     --k3s-version $VERSION \
-    --k3s-extra-args '--flannel-iface=eth0 --disable servicelb --disable traefik' \
+    --k3s-extra-args '--flannel-iface=eth0 --disable servicelb --disable traefik --disable local-storage' \
     --local-path $HOME/.kube/config \
     --context "picluster"
 
