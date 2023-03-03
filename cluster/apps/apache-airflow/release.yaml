@@ -35,4 +35,6 @@ spec:
       gitSync:
         enabled: true
         repo: https://github.com/dvignoles/pikluster-dags.git
-        subPath: dags/
+        branch: master
+        depth: 1
+        subPath: dags
