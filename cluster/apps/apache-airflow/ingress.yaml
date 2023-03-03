@@ -1,0 +1,25 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: airflow-webserver
+  namespace: airflow
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.airflow.local.danielvignoles.com`)
+      kind: Rule
+      services:
+        - name: airflow-webserver
+          port: 8080
+    - match: Host(`airflow.local.danielvignoles.com`)
+      kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: networking
+      services:
+        - name: airflow-webserver
+          port: 8080
