@@ -20,3 +20,12 @@ spec:
     migrateDatabaseJob:
       useHelmHooks: false
       applyCustomEnv: false
+    webserverSecretKey: ${SECRET_AIRFLOW_SECRET_KEY}
+    secret:
+      - envName: "AIRFLOW_CONN_AWS"
+        secretName: "my-airflow-connections"
+        secretKey: "AIRFLOW_CONN_AWS"
+    extraSecrets:
+      my-airflow-connections:
+        stringData: |
+          AIRFLOW_CONN_AWS: ${SECRET_AIRFLOW_CONN_AWS_URI}
