@@ -29,3 +29,9 @@ spec:
       my-airflow-connections:
         stringData: |
           AIRFLOW_CONN_AWS: ${SECRET_AIRFLOW_CONN_AWS_URI}
+    dags:
+      persistance: True
+      gitSync:
+        enabled: True
+        repo: https://github.com/dvignoles/pikluster-dags.git
+        subPath: dags/
