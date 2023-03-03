@@ -12,3 +12,9 @@ kind: L2Advertisement
 metadata:
   name: first-pool-l2-advertisement
   namespace: networking
+spec:
+ipAddressPools:
+- first-pool
+interfaces:
+- eth0
+- wlan0
