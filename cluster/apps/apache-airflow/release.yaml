@@ -30,7 +30,7 @@ spec:
         stringData: |
           AIRFLOW_CONN_AWS: ${SECRET_AIRFLOW_CONN_AWS_URI}
     dags:
-      persistance: True
+      persistence: True
       gitSync:
         enabled: True
         repo: https://github.com/dvignoles/pikluster-dags.git
