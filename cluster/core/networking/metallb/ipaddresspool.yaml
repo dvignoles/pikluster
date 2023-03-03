@@ -15,6 +15,3 @@ metadata:
 spec:
 ipAddressPools:
 - first-pool
-interfaces:
-- eth0
-- wlan0
